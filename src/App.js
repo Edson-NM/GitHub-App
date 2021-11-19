@@ -1,27 +1,36 @@
 import './App.css';
 import { BrowserRouter, Switch, Route } from "react-router-dom"
 
-//COMPONENTS
-import Header from './Components/Custom/Header/Header';
+//PAGES
+import Home from "./Pages/Home/Home.jsx"
+import MainLayout from "./Layouts/MainLayout.jsx"
+// import NotFound from "./Pages/NotFound/NotFound.jsx"
+import Followers from './Pages/Followers/Followers';
+import Repositories from './Pages/Repositories/Repositories';
 
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
         <Switch>
-          <Route path="/" exact>
-            <Header/>
-            {/* <Home/> */}
-          </Route>
-          <Route path="/" exact>
+          <MainLayout>
 
-          </Route>
-          <Route path="*">
-            <h2>404 Not Found</h2>
-          </Route>
+            <Route path="/" exact>
+              <Home/>
+            </Route>
 
+            <Route path="/followers/:user" exact>
+              <Followers/>
+            </Route>
+
+            <Route path="/repositories/:user" exact>
+              <Repositories/>
+            </Route>
+
+          </MainLayout>
         </Switch>
       </BrowserRouter>
+
 
     </div>
   );
